@@ -17,7 +17,7 @@ export default class UserAuth {
         expiresIn: "1h",
       });
       res.cookie("token", token);
-      return res.send({ ok: true, msg: "User registered successfully" });
+      return res.send({ ok: true, token, user });
     } catch (error) {
       res.status(500).json({ ok: false, msg: error.message });
     }
@@ -36,9 +36,7 @@ export default class UserAuth {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
-      return res
-        .cookie("token", token)
-        .json({ ok: true, msg: "Login succesfull." });
+      return res.cookie("token", token).json({ ok: true, token, user });
     } catch (error) {
       return res.status(500).json({ ok: false, msg: error.message });
     }
@@ -55,7 +53,7 @@ export default class UserAuth {
   };
   profile = async (req, res) => {
     try {
-      res.send(req.user);
+      return res.send(req.user);
     } catch (error) {
       res.json({ ok: false, msg: error.message });
     }

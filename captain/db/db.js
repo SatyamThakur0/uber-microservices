@@ -7,7 +7,7 @@ function connect() {
   mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
-      console.log("User service connected to mongoDB...");
+      console.log("Captain service connected to mongoDB...");
     })
     .catch((err) => {
       console.log(err);

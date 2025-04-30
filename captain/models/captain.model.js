@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema(
+const captainSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -15,9 +15,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       select: false,
     },
+    isAvailable: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-const user = mongoose.model("user", userSchema);
-export default user;
+const captain = mongoose.model("captain", captainSchema);
+export default captain;
