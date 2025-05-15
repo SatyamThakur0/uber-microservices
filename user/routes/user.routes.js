@@ -8,5 +8,7 @@ router.post("/register", userController.register);
 router.post("/login", userController.login);
 router.get("/profile", authMiddleware, userController.profile);
 router.get("/logout", authMiddleware, userController.logout);
+router.post("/logout", authMiddleware, userController.logout);
+router.get("/wait-for-ride-accept", authMiddleware, userController.waitForRideAccept);
 
 export default router;
